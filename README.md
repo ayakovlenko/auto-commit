@@ -59,7 +59,13 @@ curl -fsSL https://deno.land/x/install/install.sh | sh
 # Clone and install
 git clone https://github.com/sidedwards/auto-commit.git
 cd auto-commit
-deno task install
+deno install --global -f \
+   --allow-read \
+   --allow-write \
+   --allow-run=git \
+   --allow-env=HOME,ANTHROPIC_BASE_URL,ANTHROPIC_AUTH_TOKEN,DEBUG \
+   --allow-net=api.anthropic.com:443 \
+   main.ts
 ````
 
 ### Updating
